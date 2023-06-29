@@ -1,0 +1,388 @@
+@import "tailwindcss/utilities";
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+
+@layer base {    
+    *, ::before, ::after{
+        @apply box-border;
+        transition: all 0.3s;
+    }    
+    body {
+        @apply p-0 m-0 font-workSans text-16 leading-26 font-wsReg text-richBlack;   
+    }  
+    .container-fluid{
+        @apply px-55 laptop:px-35 mdscreen:px-30;
+    }
+    .container-small{
+        @apply px-100;
+    }
+    ul{
+        @apply list-none m-0 p-0;
+    }
+    a {
+        @apply no-underline; 
+    }
+    a, button, input, textarea, select {
+        @apply outline-0;
+        box-shadow: none;
+    }
+    p{
+        @apply m-0 text-16 leading-26 font-workSans font-wsReg;
+    }
+    img{
+        @apply object-cover h-full w-full;
+    }
+    ul {
+        @apply p-0 mt-0;
+    }
+    h1, h2, h3, h4, h5, h6 {
+        @apply m-0 font-interstate font-inBlack italic leading-auto;
+    }
+    h1, .h1 {
+        @apply text-64 lgscreen:text-48; 
+    } 
+    h2, .h2 {
+        @apply text-48 mb-14 lgscreen:text-32; 
+    }
+    h3, .h3 {
+        @apply text-32 lgscreen:text-24; 
+    }
+    h4, .h4 {
+        @apply text-24 lgscreen:text-20;
+    }
+    h5, .h5 {
+        @apply text-20 lgscreen:text-16;
+    }
+    h6, .h6 {
+        @apply text-16;
+    } 
+    .textAnim{
+       @apply relative;
+    }
+}
+
+@layer components {  
+
+    .at-image-banner{
+        @apply flex items-center mdscreen:items-start;
+    }
+    .at-image-banner .content-section{
+        @apply relative py-[77.4px] pl-100 pr-[212px] z-1 mdscreen:text-center mdscreen:pt-55 mdscreen:px-30 mdscreen:pb-[165px];
+    }
+    .at-image-banner .content-section .text-wrapper{
+        @apply max-w-480 text-white mdscreen:m-auto mdscreen:max-w-full mdscreen:text-center;
+    }
+    .at-image-banner .content-section .text-wrapper h3{
+        @apply font-inLgt mb-5;
+    }
+    .at-image-banner .content-section .text-wrapper p{
+        @apply mb-14;
+    }
+    .at-image-banner .content-section::before{
+        content: "";
+        @apply absolute left-0 top-0 bottom-0 right-0 h-full w-full z-1_minus;
+    }
+    .at-image-banner.grey-bg .content-section::before{
+        @apply bg-grey_gradient mdscreen:bg-grey_gradient_mobile;
+    }
+    .swiper-button-next::after{
+       content: '';
+       background-image: url('../../images/arrow-point-to-right.svg');
+       @apply bg-contain h-20 w-20 right-0;
+    }
+    .swiper-button-next{
+        @apply right-0;
+    }
+    .swiper-button-prev{
+        @apply left-0;
+    }
+    .swiper-button-prev::after{
+        content: '';
+        background-image: url('../../images/arrow-point-to-left.svg');
+        @apply  bg-contain h-20 w-20;
+     }
+     .swiper-pagination{
+        @apply flex items-center justify-center h-20 w-[300px] !bottom-[40px];
+     }
+     .swiper-pagination .swiper-pagination-bullet{
+        @apply h-15 w-15 opacity-[0.55] bg-white !mx-14 transition-all duration-300 ease-in-out;
+     }
+     .swiper-pagination .swiper-pagination-bullet-active{
+        @apply opacity-100 transition-all duration-300 ease-in-out scale-[1.333];
+     }
+     .theme-btn{
+        clip-path: polygon(9% 0, 100% 0%, 100% 100%, 0% 100%);
+        @apply py-10 pl-32 pr-31 bg-primary relative transition-common duration-300 ease-in-out text-16 font-wsBold leading-26 text-white inline-block capitalize; 
+     }
+     .theme-btn:hover{
+        clip-path: polygon(0% 0, 100% 0%, 100% 100%, 0% 100%);
+        @apply bg-white text-primary;
+     }
+}
+@layer utilities {  
+    /* header start */
+    .announcement-banner .content-wrapper{
+        @apply overflow-hidden; 
+    }
+    .announcement-banner .swiper-slide .content-wrapper p{
+        @apply text-16 font-wsBold leading-26 text-white translate-y-100pr transition-common duration-700 ease-linear; 
+    }
+    .announcement-banner .swiper-slide-active .content-wrapper p{
+        @apply translate-y-0;
+    }
+    .announcement-banner .swiper-button-next,
+    .announcement-banner .swiper-button-prev{
+        @apply mdscreen:hidden;
+    }
+    .top-header{
+        @apply px-55 laptop:px-35 mdscreen:px-10;
+    }
+    .at-header{
+        @apply top-[54px] left-0 right-0 bg-white absolute z-9;
+    }
+    .top-navigation .top-bar-brand{
+        @apply laptop:max-w-[180px];
+    }
+    .top-bar-menu ul li{
+        @apply relative;
+    }
+    .top-bar-menu ul li a{
+        @apply text-richBlack text-16 leading-26 font-wsBold capitalize py-53 block;
+    }
+    .top-bar-menu ul li.current-menu-item a, .top-bar-menu ul li a:hover, .top-bar-menu ul li a:focus, .top-bar-menu ul li:hover a{ 
+        @apply text-primary;
+    }
+    .top-bar-menu ul li.menu-item-has-children .sub-menu{
+        @apply absolute left-0 w-auto py-14 top-100%  bg-cream opacity-0 pointer-events-none transition-common translate-y-halfPx duration-300 ease-linear;
+    }
+    .top-bar-menu ul li.menu-item-has-children .sub-menu li a{
+        @apply text-primary py-14 px-28 block whitespace-nowrap capitalize transition-backgroundColor duration-300 ease-in-out;
+    }
+    .top-bar-menu ul li.menu-item-has-children .sub-menu li a:hover{
+        @apply text-white bg-primary transition-common;
+    }
+    .top-bar-menu ul li.menu-item-has-children:hover .sub-menu{
+        @apply translate-y-0 pointer-events-auto opacity-100;
+    }
+    .top-navigation .top-bar-right .search-form{
+        @apply relative w-[200px];
+    }
+    .top-navigation .top-bar-right .search-form input{
+        @apply h-46 w-full border-primary border-1;
+    }
+    .accordian-menu{
+        @apply fixed top-[193px] smscreen:top-[165px] shadow-menuShadow left-minus_100% right-0 w-full bg-cream py-20 z-2 transition-all duration-300 ease-in-out overflow-y-auto;
+    }
+    .accordian-menu.open{
+        @apply left-0;
+    }
+    .accordian-menu .menu .menu-item a{
+        @apply py-20 px-30 text-richBlack capitalize text-16 leading-26 font-wsBold block;
+    }
+    .accordian-menu .menu .menu-item .sub-menu{
+        @apply bg-primary hidden transition-none;
+    }
+    .accordian-menu .menu .menu-item.menu-item-has-children a{
+        @apply relative flex items-center justify-between;
+    }
+    .accordian-menu .menu .menu-item.menu-item-has-children a span{
+        background-image: url('../../images/dropdown-arrow.svg');
+        @apply h-15 w-15 bg-cover bg-bottom transition-all duration-200 ease-linear inline-block cursor-pointer;
+    }
+    .accordian-menu .menu .menu-item.menu-item-has-children.open a span{
+        @apply bg-top;
+    }
+    .mobile-search{
+        @apply fixed top-[193px] smscreen:top-[165px] shadow-menuShadow left-minus_100% right-0 w-full bg-cream py-20 px-30 z-2 transition-all duration-300 ease-in-out;
+    }
+    .mobile-search.open{
+        @apply left-0;
+    }
+    .mobile-search .form-wrapper{
+        @apply relative;
+    }
+    .mobile-search .form-wrapper .search_svg, .mobile-search .form-wrapper .close_svg, 
+    .top-navigation .top-bar-right .search-form .search_svg, .top-navigation .top-bar-right .search-form .close_svg{
+        @apply absolute object-contain;
+    }
+    .mobile-search .form-wrapper .search_svg,
+    .top-navigation .top-bar-right .search-form .search_svg{
+        @apply left-20 top-13 h-20 w-20;
+    }
+    .mobile-search .form-wrapper .close_svg,
+    .top-navigation .top-bar-right .search-form .close_svg{
+        @apply right-20 top-15 h-15 w-15;
+    }
+    .mobile-search .form-wrapper input,
+    .top-navigation .top-bar-right .search-form input{
+        @apply w-full h-46 border-primary rounded-none py-10 pl-50  text-16 leading-26 text-richBlack capitalize border-1;
+    }
+    .mobile-search .form-wrapper input::placeholder,
+    .top-navigation .top-bar-right .search-form input::placeholder{
+        @apply text-16 opacity-40 text-richBlack capitalize;
+    }
+    .top-navigation .top-bar-right .search-form{
+        @apply w-44 border-0;
+    }
+    .top-navigation .top-bar-right .search-form input{
+        @apply border-0;
+    }
+    .top-navigation .top-bar-right .search-form .search_svg{
+        @apply cursor-pointer;
+    } 
+    .top-navigation .top-bar-right .search-form .close_svg{
+        @apply opacity-0 cursor-pointer;
+    } 
+    .top-navigation .top-bar-right .search-form.open{
+        @apply w-[200px];
+    }
+    .top-navigation .top-bar-right .search-form.open input{
+        @apply border-1 pr-45;
+    }
+    .top-navigation .top-bar-right .search-form.open .close_svg{
+        @apply opacity-100;
+    }
+    .accordian-menu .menu .menu-item .sub-menu li a{
+        @apply text-white;
+    }
+    .responsive-menu .toggle_btn.active svg path,
+    .responsive-menu .search-icon.active svg path{
+        @apply fill-primary;
+    }
+    /* header end */
+
+    /* hero banner start */
+    .heroBanner {
+        @apply h-800;
+    }
+    .heroBanner .image-wrapper {
+        @apply relative h-full bg-cover bg-no-repeat bg-center;
+    }
+
+    .heroBanner .image-wrapper .content-wrapper{
+        background: linear-gradient(270deg, #00274F 0%, rgba(0, 39, 79, 0.88) 49%, rgba(0, 39, 79, 0.72) 67%, rgba(0, 39, 79, 0.53) 83%, rgba(0, 39, 79, 0) 100%);
+        @apply absolute top-[245px] right-0 pr-[85px] pl-[106px] pt-[56.5px] pb-[75.5px] bg-no-repeat bg-right-top bg-contain smscreen:top-[190px] lgscreen:pt-[52.5px] lgscreen:pb-[71.5px];
+    }
+    .heroBanner .swiper-slide:nth-child(even) .image-wrapper .content-wrapper{
+        background: linear-gradient(90deg, #00274F 0%, rgba(0, 39, 79, 0.88) 49%, rgba(0, 39, 79, 0.72) 67%, rgba(0, 39, 79, 0.53) 83%, rgba(0, 39, 79, 0) 100%);
+        @apply left-0 right-inherit top-[201px] pl-75 pt-[59.5px] smscreen:top-[175px];
+    }
+    .heroBanner .swiper-slide:last-child .image-wrapper .content-wrapper{
+        @apply smscreen:top-[226px]; 
+    }
+    .heroBanner .image-wrapper .content-wrapper h1{
+        @apply text-white italic mb-10 uppercase pr-[13px] translate-x-[58px] opacity-5 lgscreen:pr-0;
+    }
+    .heroBanner .image-wrapper .content-wrapper h2{
+        @apply max-w-[694px] text-white font-inLgt mb-[31px] uppercase translate-x-[58px] opacity-5 lgscreen:m-auto lgscreen:mb-[28px];
+    }
+    .heroBanner .swiper-slide{
+        @apply opacity-0;
+    }
+
+    .heroBanner .swiper-slide:nth-child(even) .image-wrapper .content-wrapper h1{
+        @apply max-w-[740px];
+    }
+    .heroBanner .swiper-slid.swiper-slide-active {
+        @apply opacity-100;
+    }
+    .heroBanner .swiper-slide-active .image-wrapper .content-wrapper h1,
+    .heroBanner .swiper-slide-active .image-wrapper .content-wrapper h2,
+    .heroBanner .swiper-slide-active .image-wrapper .content-wrapper .theme-btn{
+        @apply translate-x-0 opacity-100 transform-none transition-common duration-500 ease-in-out;
+    }
+    .heroBanner .swiper-slide-active .image-wrapper .content-wrapper h2{
+        @apply delay-75;
+    }
+    /* hero banner end */
+
+    /* alpha swiper */
+    .alphaSwiper .content-wrapper{
+        @apply bg-alpha_Gradient p-20 flex flex-col items-center rounded-none rounded-tr-[124px] rounded-tl-[124px] text-center w-full h-full;
+    }
+    .alphaSwiper .swiper-slide{
+        @apply w-[248px] h-auto;
+    }
+    .alphaSwiper .swiper-wrapper{
+        @apply justify-center;
+    }
+    .alphaSwiper .content-wrapper .letter{
+        @apply border-[10px] border-solid bg-primary border-grey rounded-[50%] relative flex items-center justify-center h-[208.4px] w-[208.4px] mb-28; 
+    }
+    .alphaSwiper .content-wrapper .letter h2{
+        @apply text-white font-inBlack uppercase relative italic text-[155px] relative z-1;
+    }
+    .alphaSwiper .content-wrapper .letter span.letter-shadow{
+        filter: blur(5px);
+        @apply absolute text-darkBlue z-1_minus left-0 right-0;
+
+    }
+    .alphaSwiper .content-wrapper .title .h5{
+        @apply text-white italic mb-10;
+    }
+    .alphaSwiper .content-wrapper .text-wrapper p{
+        @apply text-white;
+    }
+     /* alpha swiper end */
+}     
+
+/* Responsive CSS Start */
+@screen maxscreen {
+
+}
+@screen desktop2 {
+
+}
+@screen desktop {
+
+}
+@screen laptop {
+
+}
+@screen 1279{
+    .top-navigation{
+        @apply py-28
+    }
+    .responsive-menu .toggle_btn{
+        @apply h-20 w-20;
+    }
+}
+@screen xlscreen {
+
+}
+@screen lgscreen {
+    .heroBanner .image-wrapper .content-wrapper,
+    .heroBanner .swiper-slide:nth-child(odd) .image-wrapper .content-wrapper{
+        @apply bg-none bg-dakBlue_8 left-0 text-center px-30 right-0 left-0;
+    }
+    .heroBanner .swiper-slide:nth-child(odd) .image-wrapper .content-wrapper h1 {
+        @apply m-auto mb-10;
+    }
+}
+@screen mdscreen2 {
+
+}
+@screen mdscreen {
+    .at-transport-section{
+        background-image:url('../../images/transport-bg-mobile.jpg') !important;
+        @apply bg-no-repeat h-745 bg-bottom;
+    }
+}
+@screen smscreen2 {
+
+}
+@screen smscreen {
+    .responsive-menu .nav-brand{
+        @apply max-w-[176px] h-55;
+    }
+    .responsive-menu .nav-brand img{
+        @apply object-contain;
+    }
+}
+@screen xsscreen2 {
+
+}
+@screen xsscreen {
+    
+}   
+/* Responsive CSS End */
