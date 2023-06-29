@@ -1,5 +1,7 @@
 $(document).ready(function () {
     // code here
+
+    // swipersection start
     var announcementBanner = new Swiper(".announcement-banner", {
         loop: false,
         effect: 'fade',
@@ -21,26 +23,93 @@ $(document).ready(function () {
         },
     });
     var alphaSwiper = new Swiper(".alphaSwiper", {
-        spaceBetween: 40,
+        spaceBetween: 0,
         slidesPerView: 'auto',
-        grabCursor: true,
-        autoplay: false,
+        autoplay: false, 
         breakpoints: {
-            640: {
-              spaceBetween: 20,
+            0: {
+                slidesPerView: "auto",
+                spaceBetween: 20, 
             },
             768: {
+            slidesPerView: "auto",
+            centeredSlides: true,
+            spaceBetween: 20, 
             navigation: {
                 nextEl: ".swiper-button-next",
                 prevEl: ".swiper-button-prev"
             },
             },
-            1024: {
-              spaceBetween: 40,
+            1199: {
+              slidesPerView: 'auto',
+              spaceBetween: 0,
             },
           },
 
     });
+    var partnerSwiper = new Swiper(".partnerSwiper", {
+        slidesPerView: "3.5",
+        spaceBetween: 80,
+        breakpoints: {
+            0: {
+                spaceBetween: 40,
+                centeredSlides: true,
+                loop: true,
+                slidesPerView: "2",
+            }, 
+            640: {
+                slidesPerView: "2.5",
+            },
+            767: {
+                spaceBetween: 50,
+                slidesPerView: "2.3",
+            },
+            1024: {
+                spaceBetween: 60,
+                slidesPerView: "2.5",
+            },
+            1400: {
+                spaceBetween: 80,
+                slidesPerView: "3.5",
+            },
+            1599: {
+                spaceBetween: 0,
+                slidesPerView: "4",
+            },
+          },
+    });
+    var trioSlider = new Swiper(".at-trio-slider", {
+        slidesPerView: 3,
+        spaceBetween: 40,
+        breakpoints: {
+            0: {
+                spaceBetween: 20,
+                slidesPerView: 1.5,
+                centeredSlides: true,
+                navigation: {
+                    nextEl: ".swiper-button-next",
+                    prevEl: ".swiper-button-prev"
+                }
+            }, 
+            640: {
+                slidesPerView: 1.5,
+                centeredSlides: true,
+                spaceBetween: 30,
+                navigation: {
+                    nextEl: ".swiper-button-next",
+                    prevEl: ".swiper-button-prev"
+                }
+            },
+            991: {
+                slidesPerView: 3,
+                spaceBetween: 40,
+            },
+
+          },
+    });
+    // swipersection end
+
+    // animation start
     const textAnim = gsap.utils.toArray('.textAnim');
     textAnim.forEach((box, i) => {
         const textanim = gsap.fromTo(box.children, { y: '30px', opacity: 0 ,autoAlpha:0, transition: 'all 1s cubic-bezier(0.23, 0.93, 0.23, 0.93)',}, { duration: 0.8, y: 0, opacity: 1 ,stagger: 1,autoAlpha:1});

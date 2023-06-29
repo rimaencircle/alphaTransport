@@ -14,7 +14,7 @@
         @apply px-55 laptop:px-35 mdscreen:px-30;
     }
     .container-small{
-        @apply px-100;
+        @apply px-100 laptop:px-35 mdscreen:px-30;
     }
     ul{
         @apply list-none m-0 p-0;
@@ -36,7 +36,7 @@
         @apply p-0 mt-0;
     }
     h1, h2, h3, h4, h5, h6 {
-        @apply m-0 font-interstate font-inBlack italic leading-auto;
+        @apply m-0 font-interstate font-inBlack italic leading-auto uppercase;
     }
     h1, .h1 {
         @apply text-64 lgscreen:text-48; 
@@ -59,6 +59,35 @@
     .textAnim{
        @apply relative;
     }
+    .section-title{
+        @apply mb-40;
+    }
+    .section-title h2{
+        @apply text-darkBlue;
+    }
+    .section-common-padding{
+        @apply py-80 smscreen:py-55
+    }
+    .at-trio-slider{
+        @apply px-55 mdscreen2:px-0 mdscreen2:pb-60;
+    }
+    .at-trio-slider .trio-navigation{
+        @apply absolute bottom-0 left-0 right-0 flex items-center justify-center gap-40 hidden mdscreen2:flex;
+    }
+    .at-trio-slider .trio-navigation .swiper-button-prev,
+    .at-trio-slider .trio-navigation .swiper-button-next{
+        @apply relative left-inherit right-inherit top-inherit bottom-inherit m-0 h-20 w-20;
+    }
+    .at-trio-slider .trio-navigation  .swiper-button-next::after{
+        content: '';
+        background-image: url('../../images/arrow-point-to-right-dark.svg');
+        @apply bg-contain h-20 w-20 right-0;
+     }
+     .at-trio-slider .trio-navigation  .swiper-button-prev::after{
+        content: '';
+        background-image: url('../../images/arrow-point-to-left-dark.svg');
+        @apply bg-contain h-20 w-20 right-0;
+     }
 }
 
 @layer components {  
@@ -112,11 +141,18 @@
      }
      .theme-btn{
         clip-path: polygon(9% 0, 100% 0%, 100% 100%, 0% 100%);
-        @apply py-10 pl-32 pr-31 bg-primary relative transition-common duration-300 ease-in-out text-16 font-wsBold leading-26 text-white inline-block capitalize; 
+        @apply py-10 pl-32 pr-31 bg-primary relative transition-common duration-300 ease-in-out text-16 font-wsBold leading-26 text-white inline-block capitalize z-1 max-w-fit overflow-hidden; 
+     }
+     .theme-btn::before{
+        content: '';
+        @apply absolute h-200pr w-200pr bottom-110% left-half bg-cream rounded-half translate-x-minus_50 transition-all duration-500 ease-linear z-1_minus;
      }
      .theme-btn:hover{
-        clip-path: polygon(0% 0, 100% 0%, 100% 100%, 0% 100%);
-        @apply bg-white text-primary;
+        /* clip-path: polygon(0% 0, 100% 0%, 100% 100%, 0% 100%); */
+        @apply text-primary;
+     }
+     .theme-btn:hover::before{
+        @apply bottom-minus40pr;
      }
 }
 @layer utilities {  
@@ -301,7 +337,7 @@
         @apply bg-alpha_Gradient p-20 flex flex-col items-center rounded-none rounded-tr-[124px] rounded-tl-[124px] text-center w-full h-full;
     }
     .alphaSwiper .swiper-slide{
-        @apply w-[248px] h-auto;
+        @apply w-[248px] h-auto mx-20;
     }
     .alphaSwiper .swiper-wrapper{
         @apply justify-center;
@@ -323,7 +359,206 @@
     .alphaSwiper .content-wrapper .text-wrapper p{
         @apply text-white;
     }
-     /* alpha swiper end */
+    /* alpha swiper end */
+
+    /* industry leader section */
+    .leader-section .card-wrapper .image-wrapper{
+        @apply h-570 relative mdscreen:h-[550px];
+    }
+    .leader-section .card-wrapper .image-wrapper .text-wrapper{
+        @apply p-28 absolute bottom-0 left-0 right-0 text-center bg-primary/[0.91] text-white;
+    }
+    .leader-section .card-wrapper .image-wrapper .text-wrapper h3{
+        @apply mb-10;
+    }
+    /* industry leader section end */
+
+    /* our vision section start */
+    .at-our-vision-section{
+        @apply relative justify-center;
+    }
+    .at-our-vision-section::before{
+        content: '';
+        @apply absolute bg-richBlack left-0 right-0 bottom-0 top-0;
+    }
+    .at-our-vision-section .image-wrapper{
+        @apply absolute left-0 right-0 top-0 bottom-0 opacity-20 mix-blend-soft-light;
+    }
+    .at-our-vision-section.at-image-banner .content-section .text-wrapper{
+        @apply max-w-952 m-auto;
+    }
+    .at-our-vision-section.at-image-banner .content-section{
+        @apply p-0;
+    }
+    /* our vision section end */
+
+    /* latest-news-section */
+    .latest-news-section.at-trio-slider{
+        @apply px-100 desktop:px-55 mdscreen2:px-0;
+    }
+    .latest-news-section .card-wrapper{
+        @apply text-center;
+    }
+    .latest-news-section .card-wrapper .image-wrapper{
+        @apply h-280 mb-28;
+    }
+    .latest-news-section .card-wrapper .text-wrapper h4{
+        @apply text-darkBlue mb-10;
+    }
+    .latest-news-section .card-wrapper .text-wrapper p{
+        @apply text-richBlack mb-10;
+    }
+    /* latest-news-section end */
+
+    /* partner section start */
+    .partnerSwiper {
+        @apply pl-100 mdscreen:pl-0;
+    }
+    .partnerSwiper .swiper-slide{
+        @apply h-auto flex items-center justify-center;
+    }
+    .partnerSwiper .image-wrapper{
+        @apply mdscreen:h-55;
+    }
+    .partnerSwiper .image-wrapper img{
+        @apply object-contain;
+    }
+    /* partner section end */
+    
+    /* footer service section */
+    .at-service-section{
+        @apply grid grid-cols-2 desktop2:grid-cols-800px_1fr desktop:grid-cols-2 mdscreen:block;
+    }
+    .at-service-section .image-section{
+        @apply mdscreen:h-[200px];
+    }
+    .at-service-section .customer-service h2{
+        @apply text-darkBlue;
+    }
+    /*techyscouts start*/
+    #techyscouts-logo {
+        @apply inline-block fill-white h-[21px] w-auto align-middle;
+    }
+
+    .techyscouts-credit-link #techyscouts-logo-heart {
+        @apply fill-primary;
+    }
+
+    .techyscouts-credit-link:hover #techyscouts-logo-heart,
+    .techyscouts-credit-link:focus #techyscouts-logo-heart {
+        animation: ts-heart-beat 2s infinite ease-in-out 0.6s; 
+    }
+
+    .techyscouts-credit-link:hover #techyscouts-logo-text,
+    .techyscouts-credit-link:focus #techyscouts-logo-text {
+        animation: ts-draw-logo 2s forwards;
+    }
+
+    .techyscouts-credit-link:hover #techyscouts-logo-line-1,
+    .techyscouts-credit-link:hover #techyscouts-logo-line-2,
+    .techyscouts-credit-link:focus #techyscouts-logo-line-1,
+    .techyscouts-credit-link:focus #techyscouts-logo-line-2 {
+        animation: ts-swoop-down 0.5s forwards ease-out;
+    }
+
+    .techyscouts-credit-link:hover #techyscouts-logo-line-2,
+    .techyscouts-credit-link:focus #techyscouts-logo-line-2 {
+        animation-name: ts-swoop-up; 
+    }
+
+    @keyframes ts-heart-beat {
+        5% {
+            transform: scale(1.1);
+            fill: white;
+        }
+
+        10% {
+            transform: scale(0.9);
+        }
+
+        15% {
+            transform: scale(1.2);
+            fill: white;
+        }
+
+        40% {
+            transform: scale(1);
+            stroke-width: 0;
+        }
+    }
+
+    @keyframes ts-draw-logo {
+        0% {
+            stroke-dasharray: 2600;
+            stroke-dashoffset: 2600;
+        }
+
+        100% {
+            stroke-dashoffset: 0;
+        }
+    }
+
+    @keyframes ts-swoop-down {
+        0% {
+            transform: translateY(-100%) rotate(10deg);
+        }
+    }
+
+    @keyframes ts-swoop-up {
+        0% {
+            transform: translateY(100%) rotate(-10deg);
+        }
+    }
+    /*techyscouts end*/
+
+    /* footer service section end*/
+
+    /* footer start */
+    .footer{
+        @apply text-white;
+    }
+    .footer .subscribe-section h3{
+        @apply font-inLgt mb-5;
+    }
+    .footer .subscribe-section h2{
+        @apply mb-20;
+    }
+    .footer .menu-wrapper .menu .menu-item a{
+        @apply text-white uppercase;
+    }
+    .footer .menu-wrapper .menu .menu-item a:hover{
+        @apply text-[#4795e6];
+    }
+    .footer .menu-wrapper .helpful-links{
+        @apply mt-70 mdscreen:mt-55;
+    }
+    .footer .menu-wrapper .helpful-links .social-media ul li a{
+        @apply inline-block h-40 w-40 transition-common duration-300 ease-linear;
+    }
+    .footer .menu-wrapper .helpful-links .social-media ul li a:hover{
+        @apply scale-[0.7];
+    }
+    .subscribe-form form .gform_body input{
+        @apply w-full h-46 border-primary rounded-none py-10 px-20  text-16 leading-26 text-richBlack capitalize border-2 border-solid;
+    }
+    .subscribe-form form .gform_body input::placeholder{
+        @apply text-16 opacity-40 text-richBlack capitalize;
+    }
+    .subscribe-form form{
+        @apply relative max-w-[429px] desktop:max-w-[350px] mdscreen:m-auto;
+    }
+    .subscribe-form form .gform_footer{
+        @apply absolute top-0 left-[94%] mdscreen:relative mdscreen:top-inherit mdscreen:left-inherit mdscreen:mt-20;
+    }
+    .subscribe-form form .gform_footer input[type=submit]{
+        clip-path: polygon(9% 0, 100% 0%, 100% 100%, 0% 100%);
+        @apply py-8 pl-32 pr-31 bg-primary relative transition-common duration-300 ease-in-out text-16 font-wsBold leading-26 text-white inline-block capitalize z-1 max-w-fit overflow-hidden cursor-pointer border-2 border-primary border-solid; 
+    }
+    .subscribe-form form .gform_footer input[type=submit]:hover{
+        clip-path: polygon(0% 0, 100% 0%, 100% 100%, 0% 100%);
+        @apply bg-cream text-primary;
+    }
+    /* footer end */
 }     
 
 /* Responsive CSS Start */
@@ -334,12 +569,20 @@
 
 }
 @screen desktop {
-
+    .alphaSwiper .swiper-slide{
+        @apply w-[212px] mx-15;
+    }
+    .alphaSwiper .content-wrapper .letter{
+        @apply h-150 w-150
+    }
+    .alphaSwiper .content-wrapper .letter h2{
+        @apply text-[96px];
+    }
 }
 @screen laptop {
 
 }
-@screen 1279{
+@screen 1299{
     .top-navigation{
         @apply py-28
     }
@@ -348,7 +591,12 @@
     }
 }
 @screen xlscreen {
-
+    .alphaSwiper .swiper-slide {
+        @apply m-0;
+    }
+    .alphaSwiper .swiper-slide .content-wrapper{
+        @apply max-w-[212px] m-auto;
+    }
 }
 @screen lgscreen {
     .heroBanner .image-wrapper .content-wrapper,
