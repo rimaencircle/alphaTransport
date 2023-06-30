@@ -1,6 +1,6 @@
 $(document).ready(function () {
     // code here
-
+    
     // swipersection start
     var announcementBanner = new Swiper(".announcement-banner", {
         loop: false,
@@ -28,19 +28,31 @@ $(document).ready(function () {
         autoplay: false, 
         breakpoints: {
             0: {
-                slidesPerView: "auto",
+                slidesPerView: 'auto',
+                centeredSlides: true,
                 spaceBetween: 20, 
+                navigation: {
+                    nextEl: ".swiper-button-next",
+                    prevEl: ".swiper-button-prev"
+                },
             },
-            768: {
-            slidesPerView: "auto",
-            centeredSlides: true,
+            640: {
+                slidesPerView: 'auto',
+                spaceBetween: 20, 
+                navigation: {
+                    nextEl: ".swiper-button-next",
+                    prevEl: ".swiper-button-prev"
+                },
+            },
+            991: {
+            slidesPerView: 'auto',
             spaceBetween: 20, 
             navigation: {
                 nextEl: ".swiper-button-next",
                 prevEl: ".swiper-button-prev"
             },
             },
-            1199: {
+            1299: {
               slidesPerView: 'auto',
               spaceBetween: 0,
             },
@@ -112,14 +124,24 @@ $(document).ready(function () {
     // animation start
     const textAnim = gsap.utils.toArray('.textAnim');
     textAnim.forEach((box, i) => {
-        const textanim = gsap.fromTo(box.children, { y: '30px', opacity: 0 ,autoAlpha:0, transition: 'all 1s cubic-bezier(0.23, 0.93, 0.23, 0.93)',}, { duration: 0.8, y: 0, opacity: 1 ,stagger: 1,autoAlpha:1});
+        const textanim = gsap.fromTo(box.children, { y: '50px', opacity: 0 ,autoAlpha:0, transition: 'all 500ms cubic-bezier(0.23, 0.93, 0.23, 0.93)',}, { duration: 0.5, y: 0, opacity: 1 ,stagger: 1,autoAlpha:1});
         ScrollTrigger.create({
             trigger: box,
             animation: textanim,
             once: false,
         });
     });
-
+    const zoomAnim = gsap.utils.toArray('.zoomAnim');
+    zoomAnim.forEach((box, i) => {
+        const zoomanim = gsap.to(box,0.5, { scale: 1.001});
+        ScrollTrigger.create({
+            trigger: box,
+            ease: 'power2.in',
+            animation: zoomanim,
+            once: false,
+        });
+    });
+    
     // mobile toggle menu
     $('.toggle_btn').click(function () {
         $(this).toggleClass('active');
