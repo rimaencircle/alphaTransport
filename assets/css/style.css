@@ -36,7 +36,7 @@
         @apply p-0 mt-0;
     }
     h1, h2, h3, h4, h5, h6 {
-        @apply m-0 font-interstate font-inBlack italic leading-auto uppercase;
+        @apply m-0 font-interstate font-inBlack italic leading-auto uppercase font-heading;
     }
     h1, .h1 {
         @apply text-64 lgscreen:text-48; 

@@ -27,18 +27,6 @@ module.exports = {
             none: 'none',
             '2': '2 2 0%',
         },
-        colors: {
-            transparent: 'transparent',   
-            white: '#FFFFFF',  
-            black: '#000000', 
-            fonts: '#555555',  
-            richBlack: '#414141',
-            primary: '#14569B',
-            cream: '#F4F4F4',
-            darkBlue: '#00274F',
-            dakBlue_8: 'rgba(0, 39, 79, 0.8)',
-            grey:"#8f8c87",
-        }, 
         container: {
             center: true,
             padding: '15px',
@@ -170,11 +158,9 @@ module.exports = {
             64: '64px',
         },
         fontWeight: {
-            inLgt: '400',
-            inBold: '700',
-            inBlack: '800',
+            heading: '400',
             wsReg: '400',
-            wsBold: '700',
+            wsBold: '600',
         },
         spacing: {
             '4': '4px',
@@ -300,6 +286,18 @@ module.exports = {
         strokeWidth: {},
         transformOrigin: {},
         extend: {
+            colors: {
+                transparent: 'transparent',   
+                white: '#FFFFFF',  
+                black: '#000000', 
+                fonts: '#555555',  
+                richBlack: '#414141',
+                primary: '#14569B',
+                cream: '#F4F4F4',
+                darkBlue: '#00274F',
+                dakBlue_8: 'rgba(0, 39, 79, 0.8)',
+                grey:"#8f8c87",
+            }, 
             backdropBlur: {
                 sm: '4px',
                 md: '8px',

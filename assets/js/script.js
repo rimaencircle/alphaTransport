@@ -38,7 +38,7 @@ $(document).ready(function () {
             // map tabbing section
             $('.accordion-list li').on('click', function(){
                 var target = $(this).attr('data-rel');
-                $('.accordion-list li a').removeClass('tab-active');
+                $('.accordion-list li').removeClass('tab-active');
                 $(this).addClass('tab-active');
                 $("#"+target).fadeIn('slow').siblings(".map-image").hide();
                 return false;
